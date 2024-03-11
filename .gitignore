@@ -1,0 +1,17 @@
+# IDE
+.vscode
+
+# Virtual Environment
+.venv
+
+# Pycache
+__pycache__
+
+
+# Environment variables
+.env.dev
+.env.*.local
+
+# Telegram sessions and journales
+*.session
+*.session-journal
