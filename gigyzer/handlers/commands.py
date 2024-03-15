@@ -12,15 +12,19 @@ from gigyzer.utils import Gigachat
 
 @botClient.on_message(filters.command("start"))
 async def start_command_handler(client: Client, message: Message):
-    old_user = get_user({"user_id": message.from_user.id})
-    if not old_user:
-        create_user(UserSchema(
-            first_name=message.from_user.first_name,
-            last_name=message.from_user.last_name,
-            username=message.from_user.username,
-            user_id=message.from_user.id,
-        ))
-    return await message.reply("Gigyzer is a telegram bot based on the Giga Chat neural network from Sberbank for analyzing groups and channels, forming and grouping data into a more concise representation")
+    try:
+        old_user = get_user({"user_id": message.from_user.id})
+        if not old_user:
+            create_user(UserSchema(
+                first_name=message.from_user.first_name,
+                last_name=message.from_user.last_name,
+                username=message.from_user.username,
+                user_id=message.from_user.id,
+            ))
+        return await message.reply("Gigyzer is a telegram bot based on the Giga Chat neural network from Sberbank for analyzing groups and channels, forming and grouping data into a more concise representation")
+    except Exception as e:
+        print(f"Error: {e}")
+        return
 
 
 @botClient.on_message(filters.command(["question", "q"]))
