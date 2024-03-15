@@ -2,7 +2,7 @@ from pyrogram import Client
 from pyrogram.types import Message
 
 from gigyzer.app import userClient
-from gigyzer.database import create_user, get_user, schemas
+from gigyzer.database import create_user, schemas
 from gigyzer.utils import Gigachat
 
 
