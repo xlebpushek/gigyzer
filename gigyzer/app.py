@@ -1,21 +1,19 @@
-from pyrogram import compose, filters
-from pyrogram.handlers import MessageHandler
+from pyrogram import Client
 
-from gigyzer import botClient, userClient
-from gigyzer.handlers import analyze_command, start_command
+from gigyzer.configs import (TELEGRAM_APP_API_HASH, TELEGRAM_APP_API_ID,
+                             TELEGRAM_BOT_API_TOKEN)
 
-botClient.add_handler(MessageHandler(
-    start_command,
-    filters.command('start'))
+botClient = Client(
+    'bot',
+    api_id=TELEGRAM_APP_API_ID,
+    api_hash=TELEGRAM_APP_API_HASH,
+    bot_token=TELEGRAM_BOT_API_TOKEN
 )
-botClient.add_handler(MessageHandler(
-    analyze_command,
-    filters.command('qu'))
+userClient = Client(
+    'client',
+    api_id=TELEGRAM_APP_API_ID,
+    api_hash=TELEGRAM_APP_API_HASH
 )
 
 
-async def bootstrap():
-    await compose([botClient, userClient])
-
-
-__all__ = ['botClient', 'userClient', 'bootstrap']
+__all__ = ['botClient', 'userClient']

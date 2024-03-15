@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "gigyzer"
+version = "1.0.0"
+description = "..."
+authors = ["Xlebp Rjanoi <xlebpushek@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pyrogram = "^2.0.106"
+aiohttp = "^3.9.3"
+urllib3 = "^2.2.1"
+python-dotenv = "^1.0.1"
+tgcrypto = "^1.2.5"
+alembic = "^1.13.1"
+sqlalchemy = "^2.0.28"
+pydantic = "^2.6.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
