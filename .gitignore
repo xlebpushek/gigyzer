@@ -1,12 +1,14 @@
 # IDE
 .vscode
 
-# Virtual Environment
-.venv
+# Design
+design
 
 # Pycache
 __pycache__
 
+# Virtual Environment
+.venv
 
 # Environment variables
 .env.dev

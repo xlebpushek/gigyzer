@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "gigyzer"
 version = "1.0.0"
-description = "..."
+description = "Gigyzer is a telegram bot based on the Giga Chat neural network from Sberbank for analyzing groups and channels, forming and grouping data into a more concise representation"
 authors = ["Xlebp Rjanoi <xlebpushek@gmail.com>"]
 license = "MIT"
 readme = "README.md"
@@ -13,7 +13,6 @@ aiohttp = "^3.9.3"
 urllib3 = "^2.2.1"
 python-dotenv = "^1.0.1"
 tgcrypto = "^1.2.5"
-alembic = "^1.13.1"
 sqlalchemy = "^2.0.28"
 pydantic = "^2.6.4"
 

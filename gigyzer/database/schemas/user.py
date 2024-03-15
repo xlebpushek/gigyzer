@@ -4,7 +4,7 @@ from typing import Optional
 from pydantic import BaseModel
 
 
-class UserModel(BaseModel):
+class UserSchema(BaseModel):
     id: Optional[int] = None
     first_name: str
     last_name: str
@@ -14,4 +14,4 @@ class UserModel(BaseModel):
     updated_at: Optional[datetime] = None
 
 
-__all__ = ["UserModel"]
+__all__ = ["UserSchema"]

@@ -1,15 +1,15 @@
-from gigyzer.database import db_session, models, schemas
+from gigyzer.database import UserModel, UserSchema, db_session
 
 
-def create_user(data: schemas.UserModel) -> schemas.UserModel:
+def create_user(data: UserSchema) -> UserModel:
     try:
-        old_user_with_username = get_user({'username': data.username})
+        old_user_with_username = get_user({"username": data.username})
         if old_user_with_username:
             raise Exception("User with this <username> already exists")
-        old_user_with_user_id = get_user({'user_id': data.user_id})
+        old_user_with_user_id = get_user({"user_id": data.user_id})
         if old_user_with_user_id:
             raise Exception("User with this <user_id> already exists")
-        user = models.UserModel(**data.dict())
+        user = UserModel(**data.dict())
         db_session.add(user)
         db_session.commit()
         db_session.refresh(user)
@@ -19,15 +19,15 @@ def create_user(data: schemas.UserModel) -> schemas.UserModel:
         raise e
 
 
-def get_user(filters: dict = None) -> schemas.UserModel:
-    query = db_session.query(models.UserModel)
+def get_user(filters: dict | None = None) -> UserModel | None:
+    query = db_session.query(UserModel)
     if filters:
         query = query.filter_by(**filters)
     return query.first()
 
 
-def update_user(user_id: int, data: dict) -> schemas.UserModel:
-    user = get_user({'user_id': user_id})
+def update_user(user_id: int, data: dict) -> UserModel:
+    user = get_user({"user_id": user_id})
     if not user:
         raise Exception("User not found")
     for key, value in data.items():
@@ -38,7 +38,7 @@ def update_user(user_id: int, data: dict) -> schemas.UserModel:
 
 
 def delete_user(user_id: int) -> bool:
-    user = get_user({'user_id': user_id})
+    user = get_user({"user_id": user_id})
     if not user:
         raise Exception("User not found")
     db_session.delete(user)
@@ -46,4 +46,4 @@ def delete_user(user_id: int) -> bool:
     return True
 
 
-__all__ = ['create_user', 'get_user', 'update_user', 'delete_user']
+__all__ = ["create_user", "get_user", "update_user", "delete_user"]

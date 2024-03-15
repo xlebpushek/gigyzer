@@ -1,22 +1,12 @@
 from asyncio import get_event_loop
 
-from pyrogram import compose, filters
-from pyrogram.handlers import MessageHandler
+from pyrogram.sync import compose
 
 from gigyzer.app import botClient, userClient
 from gigyzer.handlers import *
 
 
 async def bootstrap():
-    botClient.add_handler(MessageHandler(
-        start_command,
-        filters.command('start'))
-    )
-
-    botClient.add_handler(MessageHandler(
-        analyze_command,
-        filters.command('qu'))
-    )
     await compose([botClient, userClient])
 
 if __name__ == "__main__":
