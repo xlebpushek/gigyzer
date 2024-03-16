@@ -3,7 +3,6 @@ from asyncio import get_event_loop
 from pyrogram.sync import compose
 
 from gigyzer.app import botClient, userClient
-from gigyzer.handlers import *
 
 
 async def bootstrap():
